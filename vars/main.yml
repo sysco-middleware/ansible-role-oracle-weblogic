@@ -1,0 +1,6 @@
+---
+# vars file for ansible-oracle-wls
+oracle_wls_os_user: oraclefmw
+oracle_wls_os_group: ofmwinstall
+oracle_wls_oracle_home: /home/{{ oracle_wls_os_user }}/product/oracle_home
+oracle_wls_inventory_directory: /home/{{ oracle_wls_os_user }}/ora_inventory
