@@ -1,5 +1,13 @@
 ---
 # tasks file for ansible-oracle-wls
 - include: install-wls.yml
+  tags:
+    - install
   become: yes
   become_user: root
+
+- include: create-wls-domain.yml
+  tags:
+    - create-domain
+  become: yes
+  become_user: {{ oracle_weblogic_os_user }}

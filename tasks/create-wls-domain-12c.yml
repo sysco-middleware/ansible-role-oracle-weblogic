@@ -1,0 +1,6 @@
+
+- template:
+    src: wls-domain-12c.py.j2
+    dest: /tmp/wls-domain-12c.py
+
+- shell: "{{ oracle_weblogic_oracle_home }}/oracle_common/common/bin/wlst.sh /tmp/wls-domain-12c.py"

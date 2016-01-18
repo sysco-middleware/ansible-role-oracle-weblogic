@@ -3,3 +3,7 @@
 oracle_weblogic_version: 12c
 oracle_weblogic_release: 12.2.1
 oracle_weblogic_quick_installation_type: yes
+
+oracle_weblogic_domain_name: domain1
+oracle_weblogic_domain_adminusername: weblogic
+oracle_weblogic_domain_adminpassword: welcome1

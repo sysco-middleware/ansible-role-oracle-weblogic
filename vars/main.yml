@@ -5,6 +5,8 @@ oracle_weblogic_os_group: ofmwinstall
 oracle_weblogic_oracle_home: /home/{{ oracle_weblogic_os_user }}/product/oracle_home
 oracle_weblogic_inventory_directory: /home/{{ oracle_weblogic_os_user }}/ora_inventory
 
+oracle_weblogic_domains_home: /home/{{ oracle_weblogic_os_user }}/config/domains
+
 oracle_weblogic_installers_12_2_1:
   -
     path:
