@@ -1,0 +1,59 @@
+---
+#
+- name: validate oracle weblogic 12c release is supported
+  fail: "msg='release is not valid (supported versions: [12.2.1])'"
+  when: oracle_weblogic_release is defined and oracle_weblogic_release != '12.2.1'
+
+- name: evaluate oracle weblogic 12c {{ oracle_weblogic_release }} installers
+  stat: path="files/{{ item.path }}"
+  register: zips_state
+  with_items: "{{ oracle_weblogic_installers_12_2_1_quick }}"
+  when: oracle_weblogic_release == '12.2.1'
+
+- name: validation results
+  debug:
+    var: zips_state
+
+- name: validate installation zips exist
+  fail: msg="installation zip file {{ item.item.path }} is not present"
+  when: not item.stat.exists or not item.stat.isreg
+  with_items: "{{ zips_state.results }}"
+
+- name: validate installation zips checksum
+  fail: msg="installation zip file {{ item.item.path }} is not valid"
+  when: item.stat.checksum != item.item.checksum
+  with_items: "{{ zips_state.results }}"
+
+- name: install the latest version of unzip
+  yum: name=unzip state=latest
+
+- name: "unzip installation files"
+  unarchive: src="files/{{ item.path }}" dest=/tmp
+  with_items: "{{ oracle_weblogic_installers_12_2_1_quick }}"
+  when: oracle_weblogic_release == '12.2.1'
+
+- name: create group
+  group: name={{ oracle_weblogic_os_group }} state=present
+- name: create user
+  user: name={{ oracle_weblogic_os_user }} group={{ oracle_weblogic_os_group }} state=present
+
+- name: prepare installation directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ oracle_weblogic_os_user }}"
+    group: "{{ oracle_weblogic_os_group }}"
+  with_items:
+    - "{{ oracle_weblogic_inventory_directory }}"
+    - "{{ oracle_weblogic_oracle_home }}"
+
+- name: prepare oracle inventory file
+  template: src=ora_inst.loc.j2 dest=/tmp/ora_inst.loc
+
+- name: prepare response file
+  template: src=wls-12c-install.rsp.j2 dest=/tmp/wls-12c-install.rsp
+
+#cd $INSTALL_DIR
+#su $OS_USER -c "java -jar $WLS_JAR -ignoreSysPrereqs -novalidation -silent -responseFile /tmp/fmw_wls.rsp -invPtrLoc /tmp/oraInst.loc -jreLoc $JAVA_HOME"
+
+#echo "ORACLE_HOME=$ORACLE_HOME; export ORACLE_HOME" >> /home/$OS_USER/.bash_profile

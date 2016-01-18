@@ -1,4 +1,5 @@
 ---
 # defaults file for ansible-oracle-wls
-oracle_wls_version: 12c
-oracle_wls_release: 12.2.1
+oracle_weblogic_version: 12c
+oracle_weblogic_release: 12.2.1
+oracle_weblogic_quick_installation_type: yes

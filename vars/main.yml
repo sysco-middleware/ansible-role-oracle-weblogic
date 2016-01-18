@@ -1,6 +1,16 @@
 ---
 # vars file for ansible-oracle-wls
-oracle_wls_os_user: oraclefmw
-oracle_wls_os_group: ofmwinstall
-oracle_wls_oracle_home: /home/{{ oracle_wls_os_user }}/product/oracle_home
-oracle_wls_inventory_directory: /home/{{ oracle_wls_os_user }}/ora_inventory
+oracle_weblogic_os_user: oraclefmw
+oracle_weblogic_os_group: ofmwinstall
+oracle_wls_oracle_home: /home/{{ oracle_weblogic_os_user }}/product/oracle_home
+oracle_wls_inventory_directory: /home/{{ oracle_weblogic_os_user }}/ora_inventory
+
+oracle_weblogic_installers_12_2_1_quick:
+  -
+    path:
+    checksum:
+
+oracle_weblogic_installers_12_2_1_quick:
+  -
+    path: fmw_12.2.1.0.0_wls_quick_Disk1_1of1.zip
+    checksum: dcd79a4c911e2b18a247a2dddc5691c61dc41e88
