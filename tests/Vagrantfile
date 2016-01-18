@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
       vb.memory = "512"
     end
 
-    test01.vm.provision "ansible_local" do |ansible|
+    test01.vm.provision "ansible" do |ansible|
       ansible.playbook = "main.yml"
       ansible.galaxy_role_file = "roles.yml"
     end
