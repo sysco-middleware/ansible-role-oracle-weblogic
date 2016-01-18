@@ -1,6 +1,10 @@
 
-- template:
+- name: define domain script
+  template:
     src: wls-domain-12c.py.j2
     dest: /tmp/wls-domain-12c.py
 
-- shell: "{{ oracle_weblogic_oracle_home }}/oracle_common/common/bin/wlst.sh /tmp/wls-domain-12c.py"
+- name: create domain
+  shell: "{{ oracle_weblogic_oracle_home }}/oracle_common/common/bin/wlst.sh /tmp/wls-domain-12c.py"
+  args:
+    creates: "{{ oracle_weblogic_domains_home }}/{{ oracle_weblogic_domain_name }}/config/config.xml"
