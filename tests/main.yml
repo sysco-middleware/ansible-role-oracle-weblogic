@@ -14,3 +14,11 @@
       oracle_weblogic_domain_adminpassword: welcome1
 
     - role: elastic-filebeat
+      filebeat_version: 1.0.1
+      filebeat_logstash_host: 52.0.48.144
+      filebeat_logstash_port: 5000
+      filebeat_logs:
+      -
+        type: weblogic-server-12c
+        paths:
+          - "{{ oracle_weblogic_domains_home }}/{{ oracle_weblogic_domain_name }}/servers/AdminServer/logs/AdminServer.log"
