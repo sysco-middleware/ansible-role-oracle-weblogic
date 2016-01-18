@@ -1,0 +1,7 @@
+- name: test install weblogic 12c quick
+  hosts: test01
+  roles:
+    - role: oracle-weblogic
+      oracle_weblogic_version: 12c
+      oracle_weblogic_release: 12.2.1
+      oracle_weblogic_quick_installation_type: yes

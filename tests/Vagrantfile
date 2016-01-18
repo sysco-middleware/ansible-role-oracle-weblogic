@@ -1,0 +1,20 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+ENV['VAGRANT_DEFAULT_PROVIDER'] = 'virtualbox'
+
+Vagrant.configure(2) do |config|
+
+  config.vm.define "test01" do |test01|
+    test01.vm.box = "jeqo/oracle-jdk-8-centos7"
+
+    test01.vm.provider :virtualbox do |vb|
+      vb.cpus = 1
+      vb.memory = "512"
+    end
+
+    test01.vm.provision "ansible_local" do |ansible|
+      ansible.playbook = "main.yml"
+      ansible.galaxy_role_file = "roles.yml"
+    end
+  end
+end
