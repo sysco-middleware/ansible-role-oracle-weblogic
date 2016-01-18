@@ -2,8 +2,8 @@
 # vars file for ansible-oracle-wls
 oracle_weblogic_os_user: oraclefmw
 oracle_weblogic_os_group: ofmwinstall
-oracle_wls_oracle_home: /home/{{ oracle_weblogic_os_user }}/product/oracle_home
-oracle_wls_inventory_directory: /home/{{ oracle_weblogic_os_user }}/ora_inventory
+oracle_weblogic_oracle_home: /home/{{ oracle_weblogic_os_user }}/product/oracle_home
+oracle_weblogic_inventory_directory: /home/{{ oracle_weblogic_os_user }}/ora_inventory
 
 oracle_weblogic_installers_12_2_1:
   -

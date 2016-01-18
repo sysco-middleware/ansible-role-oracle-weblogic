@@ -27,11 +27,14 @@
 - name: install the latest version of unzip
   yum: name=unzip state=latest
 
+- set_fact:
+    oracle_weblogic_jar: "/tmp/fmw_{{ oracle_weblogic_release }}.0.0_wls_quick.jar"
+
 - name: "unzip installation files"
   unarchive:
     src: "{{ item.path }}"
     dest: /tmp
-    creates: "/tmp/fmw_{{ oracle_weblogic_release }}.0.0_wls_quick.jar"
+    creates: "{{ oracle_weblogic_jar }}"
     copy: no
   with_items: "{{ oracle_weblogic_installers_12_2_1_quick }}"
   when: oracle_weblogic_release == '12.2.1'
@@ -48,16 +51,9 @@
     owner: "{{ oracle_weblogic_os_user }}"
     group: "{{ oracle_weblogic_os_group }}"
   with_items:
-    - "{{ oracle_weblogic_inventory_directory }}"
     - "{{ oracle_weblogic_oracle_home }}"
 
-- name: prepare oracle inventory file
-  template: src=ora_inst.loc.j2 dest=/tmp/ora_inst.loc
-
-- name: prepare response file
-  template: src=wls-12c-install.rsp.j2 dest=/tmp/wls-12c-install.rsp
-
-#cd $INSTALL_DIR
-#su $OS_USER -c "java -jar $WLS_JAR -ignoreSysPrereqs -novalidation -silent -responseFile /tmp/fmw_wls.rsp -invPtrLoc /tmp/oraInst.loc -jreLoc $JAVA_HOME"
-
-#echo "ORACLE_HOME=$ORACLE_HOME; export ORACLE_HOME" >> /home/$OS_USER/.bash_profile
+- name: install weblogic
+  shell: java -jar {{ oracle_weblogic_jar }} ORACLE_HOME={{ oracle_weblogic_oracle_home }}
+  become: yes
+  become_user: "{{ oracle_weblogic_os_user }}"
