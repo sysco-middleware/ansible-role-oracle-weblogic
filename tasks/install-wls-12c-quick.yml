@@ -32,6 +32,7 @@
     src: "{{ item.path }}"
     dest: /tmp
     creates: "/tmp/fmw_{{ oracle_weblogic_release }}.0.0_wls_quick.jar"
+    copy: no
   with_items: "{{ oracle_weblogic_installers_12_2_1_quick }}"
   when: oracle_weblogic_release == '12.2.1'
 
