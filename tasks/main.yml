@@ -10,4 +10,4 @@
   tags:
     - create-domain
   become: yes
-  become_user: {{ oracle_weblogic_os_user }}
+  become_user: "{{ oracle_weblogic_os_user }}"

@@ -12,3 +12,5 @@
       oracle_weblogic_domain_name: domain1
       oracle_weblogic_domain_adminusername: weblogic
       oracle_weblogic_domain_adminpassword: welcome1
+
+    - role: elastic-filebeat
