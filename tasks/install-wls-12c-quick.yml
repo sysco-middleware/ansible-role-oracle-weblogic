@@ -5,7 +5,7 @@
   when: oracle_weblogic_release is defined and oracle_weblogic_release != '12.2.1'
 
 - name: evaluate oracle weblogic 12c {{ oracle_weblogic_release }} installers
-  stat: path="files/{{ item.path }}"
+  stat: path="{{ item.path }}"
   register: zips_state
   with_items: "{{ oracle_weblogic_installers_12_2_1_quick }}"
   when: oracle_weblogic_release == '12.2.1'
@@ -28,7 +28,7 @@
   yum: name=unzip state=latest
 
 - name: "unzip installation files"
-  unarchive: src="files/{{ item.path }}" dest=/tmp
+  unarchive: src="{{ item.path }}" dest=/tmp
   with_items: "{{ oracle_weblogic_installers_12_2_1_quick }}"
   when: oracle_weblogic_release == '12.2.1'
 
