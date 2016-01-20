@@ -5,20 +5,19 @@
       oracle_weblogic_version: 12c
       oracle_weblogic_release: 12.2.1
       oracle_weblogic_quick_installation_type: yes
-      oracle_weblogic_installers_12_2_1_quick:
-      -
-        path: /srv/files/fmw_12.2.1.0.0_wls_quick_Disk1_1of1.zip
-        checksum: dcd79a4c911e2b18a247a2dddc5691c61dc41e88
+      oracle_wlsqs_installers_12_2_1_1of1: /srv/files/fmw_12.2.1.0.0_wls_quick_Disk1_1of1.zip
       oracle_weblogic_domain_name: domain1
       oracle_weblogic_domain_adminusername: weblogic
       oracle_weblogic_domain_adminpassword: welcome1
 
-    - role: elastic-filebeat
-      filebeat_version: 1.0.1
-      filebeat_logstash_host: 52.0.48.144
-      filebeat_logstash_port: 5000
-      filebeat_logs:
-      -
-        type: weblogic-server-12c
-        paths:
-          - "{{ oracle_weblogic_domains_home }}/{{ oracle_weblogic_domain_name }}/servers/AdminServer/logs/AdminServer.log"
+- name: test install weblogic 12c
+  hosts: test02
+  roles:
+    - role: oracle-weblogic
+      oracle_weblogic_version: 12c
+      oracle_weblogic_release: 12.2.1
+      oracle_weblogic_quick_installation_type: no
+      oracle_wls_installers_12_2_1_1of1: /srv/files/fmw_12.2.1.0.0_wls_Disk1_1of1.zip
+      oracle_weblogic_domain_name: domain1
+      oracle_weblogic_domain_adminusername: weblogic
+      oracle_weblogic_domain_adminpassword: welcome1

@@ -4,6 +4,9 @@ oracle_weblogic_version: 12c
 oracle_weblogic_release: 12.2.1
 oracle_weblogic_quick_installation_type: yes
 
+oracle_wls_installers_12_2_1_1of1: roles/oracle-weblogic/files/fmw_12.2.1.0.0_wls_Disk1_1of1.zip
+oracle_wlsqs_installers_12_2_1_1of1: roles/oracle-weblogic/files/fmw_12.2.1.0.0_wls_quick_Disk1_1of1.zip
+
 oracle_weblogic_domain_name: domain1
 oracle_weblogic_domain_adminusername: weblogic
 oracle_weblogic_domain_adminpassword: welcome1
