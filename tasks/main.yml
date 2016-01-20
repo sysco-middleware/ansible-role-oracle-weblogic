@@ -8,6 +8,6 @@
 
 - include: create-wls-domain.yml
   tags:
-    - create-domain
+    - create_domain
   become: yes
   become_user: "{{ oracle_weblogic_os_user }}"

@@ -5,6 +5,6 @@
     dest: /tmp/wls-domain-12c.py
 
 - name: create domain
-  shell: "{{ oracle_weblogic_oracle_home }}/oracle_common/common/bin/wlst.sh /tmp/wls-domain-12c.py -Djava.security.egd=file:/dev/urandom"
+  shell: "{{ oracle_weblogic_oracle_home }}/oracle_common/common/bin/wlst.sh /tmp/wls-domain-12c.py -Djava.security.egd=file:/dev/urandom  >> /tmp/weblogic-domain-creation.log"
   args:
     creates: "{{ oracle_weblogic_domains_home }}/{{ oracle_weblogic_domain_name }}/config/config.xml"
