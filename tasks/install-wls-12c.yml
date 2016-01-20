@@ -21,12 +21,20 @@
     - "{{ oracle_weblogic_oracle_home }}"
     - "{{ oracle_weblogic_inventory_directory }}"
 
+
+- name: prepare oracle inventory parameters
+  template:
+    src: ora_inst.loc.j2
+    dest: "{{ oracle_weblogic_inventory_file }}"
+    owner: "{{ oracle_weblogic_os_user }}"
+    group: "{{ oracle_weblogic_os_group }}"
+
 - set_fact:
     oracle_weblogic_install_command: "java -jar /tmp/fmw_{{ oracle_weblogic_release }}.0.0_wls_quick.jar ORACLE_HOME={{ oracle_weblogic_oracle_home }} >> /tmp/weblogic-installation.log"
   when: oracle_weblogic_quick_installation_type
 
 - set_fact:
-    oracle_weblogic_install_command: "java -jar /tmp/fmw_{{ oracle_weblogic_release }}.0.0_wls.jar -silent -invPtrLoc {{ oracle_weblogic_inventory_file }} >> /tmp/soa-installation.log"
+    oracle_weblogic_install_command: "java -jar /tmp/fmw_{{ oracle_weblogic_release }}.0.0_wls.jar -silent -invPtrLoc {{ oracle_weblogic_inventory_file }} >> /tmp/weblogic-installation.log"
   when: not oracle_weblogic_quick_installation_type
 
 - name: install weblogic
