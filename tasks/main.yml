@@ -10,6 +10,8 @@
   when: oracle_weblogic_install_infra
   tags:
     - install_infra
+  become: yes
+  become_user: root
 
 - include: create-wls-domain.yml
   tags:
