@@ -1,2 +1,3 @@
 
-- include: install-wls-12c-quick.yml
+- include: install-wls-12c.yml
+  when: oracle_weblogic_version == '12c'
