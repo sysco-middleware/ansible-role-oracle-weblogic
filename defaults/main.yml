@@ -3,7 +3,7 @@
 oracle_weblogic_version: 12c
 oracle_weblogic_release: 12.2.1
 oracle_weblogic_quick_installation: yes
-oracle_weblogic_install_infra: yes
+oracle_weblogic_install_infra: no
 
 oracle_weblogic_install_type: Complete with Examples # WebLogic Server, Coherence, Complete with Examples
 oracle_weblogic_infra_install_type: Fusion Middleware Infrastructure With Examples # Fusion Middleware Infrastructure, Fusion Middleware Infrastructure With Examples.
