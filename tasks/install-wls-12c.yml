@@ -35,7 +35,7 @@
 - name: prepare oracle inventory parameters
   template:
     src: ora_inst.loc.j2
-    dest: "{{ oracle_weblogic_inventory_file }}"
+    dest: "/etc/oraInst.loc"
     owner: "{{ oracle_weblogic_os_user }}"
     group: "{{ oracle_weblogic_os_group }}"
 
@@ -44,7 +44,7 @@
   when: oracle_weblogic_quick_installation_type
 
 - set_fact:
-    oracle_weblogic_install_command: "java -jar /tmp/fmw_{{ oracle_weblogic_release }}.0.0_wls.jar -silent -invPtrLoc {{ oracle_weblogic_inventory_file }} -responseFile {{ oracle_weblogic_response_file }} >> /tmp/weblogic-installation.log"
+    oracle_weblogic_install_command: "java -jar /tmp/fmw_{{ oracle_weblogic_release }}.0.0_wls.jar -silent -responseFile {{ oracle_weblogic_response_file }} >> /tmp/weblogic-installation.log"
   when: not oracle_weblogic_quick_installation_type
 
 - name: install weblogic
