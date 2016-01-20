@@ -6,16 +6,6 @@
 
 - include: prepare-wls-installers-12c.yml
 
-- set_fact:
-    oracle_weblogic_jar: "/tmp/fmw_{{ oracle_weblogic_release }}.0.0_wls_quick.jar"
-    oracle_weblogic_install_command: "java -jar {{ oracle_weblogic_jar }} ORACLE_HOME={{ oracle_weblogic_oracle_home }} >> /tmp/weblogic-installation.log"
-  when: oracle_weblogic_quick_installation_type
-
-- set_fact:
-    oracle_weblogic_jar: "/tmp/fmw_{{ oracle_weblogic_release }}.0.0_wls.jar"
-    oracle_weblogic_install_command: "java -jar {{ oracle_weblogic_jar }} -silent -invPtrLoc {{ oracle_weblogic_inventory_file }} >> /tmp/soa-installation.log"
-  when: not oracle_weblogic_quick_installation_type
-
 - name: create group
   group: name={{ oracle_weblogic_os_group }} state=present
 - name: create user
@@ -30,6 +20,14 @@
   with_items:
     - "{{ oracle_weblogic_oracle_home }}"
     - "{{ oracle_weblogic_inventory_file }}"
+
+- set_fact:
+    oracle_weblogic_install_command: "java -jar /tmp/fmw_{{ oracle_weblogic_release }}.0.0_wls_quick.jar ORACLE_HOME={{ oracle_weblogic_oracle_home }} >> /tmp/weblogic-installation.log"
+  when: oracle_weblogic_quick_installation_type
+
+- set_fact:
+    oracle_weblogic_install_command: "java -jar /tmp/fmw_{{ oracle_weblogic_release }}.0.0_wls.jar -silent -invPtrLoc {{ oracle_weblogic_inventory_file }} >> /tmp/soa-installation.log"
+  when: not oracle_weblogic_quick_installation_type
 
 - name: install weblogic
   shell: "{{ oracle_weblogic_install_command }}"
