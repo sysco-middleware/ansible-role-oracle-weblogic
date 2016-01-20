@@ -6,6 +6,11 @@
   become: yes
   become_user: root
 
+- include: install-infra.yml
+  when: oracle_weblogic_install_infra
+  tags:
+    - install_infra
+
 - include: create-wls-domain.yml
   tags:
     - create_domain

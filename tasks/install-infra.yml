@@ -1,0 +1,3 @@
+
+- include: install-infra-12c.yml
+  when: oracle_weblogic_version == '12c'

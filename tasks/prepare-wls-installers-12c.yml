@@ -1,19 +1,5 @@
 ---
 #
-- set_fact:
-    installers:
-      -
-        path: "{{ oracle_wlsqs_installers_12_2_1_1of1 }}"
-        checksum: "{{ oracle_wlsqs_installers_12_2_1_1of1_checksum }}"
-  when: oracle_weblogic_release == '12.2.1' and oracle_weblogic_quick_installation_type
-
-- set_fact:
-    installers:
-      -
-        path: "{{ oracle_wls_installers_12_2_1_1of1 }}"
-        checksum: "{{ oracle_wls_installers_12_2_1_1of1_checksum }}"
-  when: oracle_weblogic_release == '12.2.1' and not oracle_weblogic_quick_installation_type
-
 - name: evaluate oracle weblogic 12c {{ oracle_weblogic_release }} installers
   stat: path="{{ item.path }}"
   register: zips_state
