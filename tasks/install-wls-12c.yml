@@ -21,6 +21,9 @@
     - "{{ oracle_weblogic_oracle_home }}"
     - "{{ oracle_weblogic_inventory_directory }}"
 
+- set_fact:
+    oracle_weblogic_response_file: /tmp/wls-install-12c.rsp
+
 - name: prepare installation response file
   template:
     src: wls-install-12c.rsp.j2
