@@ -19,7 +19,7 @@
     group: "{{ oracle_weblogic_os_group }}"
   with_items:
     - "{{ oracle_weblogic_oracle_home }}"
-    - "{{ oracle_weblogic_inventory_file }}"
+    - "{{ oracle_weblogic_inventory_directory }}"
 
 - set_fact:
     oracle_weblogic_install_command: "java -jar /tmp/fmw_{{ oracle_weblogic_release }}.0.0_wls_quick.jar ORACLE_HOME={{ oracle_weblogic_oracle_home }} >> /tmp/weblogic-installation.log"

@@ -3,6 +3,7 @@
 oracle_weblogic_os_user: oraclefmw
 oracle_weblogic_os_group: ofmwinstall
 oracle_weblogic_oracle_home: /home/{{ oracle_weblogic_os_user }}/product/oracle_home
+oracle_weblogic_inventory_file: /home/{{ oracle_weblogic_os_user }}/oraInst.loc
 oracle_weblogic_inventory_directory: /home/{{ oracle_weblogic_os_user }}/ora_inventory
 
 oracle_weblogic_domains_home: /home/{{ oracle_weblogic_os_user }}/config/domains
