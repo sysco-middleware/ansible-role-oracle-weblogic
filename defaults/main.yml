@@ -9,9 +9,7 @@ oracle_weblogic_install_type: Complete with Examples # WebLogic Server, Coherenc
 oracle_weblogic_infra_install_type: Fusion Middleware Infrastructure With Examples # Fusion Middleware Infrastructure, Fusion Middleware Infrastructure With Examples.
 
 oracle_wls_installers_12_2_1_1of1: roles/oracle-weblogic/files/fmw_12.2.1.0.0_wls_Disk1_1of1.zip
-oracle_wlsqs_installers_12_2_1_1of1: roles/oracle-weblogic/files/fmw_12.2.1.0.0_wls_quick_Disk1_1of1.zip
-oracle_infra_installers_12_2_1_1of1: roles/oracle-weblogic/files/sfmw_12.2.1.0.0_infrastructure_Disk1_1of1.zip
 
-oracle_weblogic_domain_name: domain1
-oracle_weblogic_domain_adminusername: weblogic
-oracle_weblogic_domain_adminpassword: welcome1
+oracle_wlsqs_installers_12_2_1_1of1: roles/oracle-weblogic/files/fmw_12.2.1.0.0_wls_quick_Disk1_1of1.zip
+
+oracle_infra_installers_12_2_1_1of1: roles/oracle-weblogic/files/sfmw_12.2.1.0.0_infrastructure_Disk1_1of1.zip
