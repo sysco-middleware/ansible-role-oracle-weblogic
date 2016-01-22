@@ -12,12 +12,10 @@ galaxy_info:
     versions:
     - 7
 
-  categories:
-  - web
-
   galaxy_tags:
-  - install_weblogic
-  - install_infra
+  - middleware
+  - oracle
+  - web
 
 dependencies:
   -
