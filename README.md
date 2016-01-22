@@ -24,13 +24,7 @@ Role Variables
 - oracle_wls_installers_12_2_1_1of1: roles/oracle-weblogic/files/fmw_12.2.1.0.0_wls_Disk1_1of1.zip # only required if oracle_weblogic_quick_installation_type is no
 - oracle_wlsqs_installers_12_2_1_1of1: roles/oracle-weblogic/files/fmw_12.2.1.0.0_wls_quick_Disk1_1of1.zip # only required if oracle_weblogic_quick_installation_type is yes
 
-*required if tag 'create_domain' will be executed*
-
-- oracle_weblogic_domain_name: domain1
-- oracle_weblogic_domain_adminusername: weblogic
-- oracle_weblogic_domain_adminpassword: welcome1
-
-# vars file for ansible-oracle-wls
+**vars file for ansible-oracle-wls**
 
 *it is recommended to keep these vars by default*
 
@@ -61,9 +55,6 @@ Example Playbook
            oracle_weblogic_release: 12.2.1
            oracle_weblogic_quick_installation_type: no
            oracle_wls_installers_12_2_1_1of1: /srv/files/fmw_12.2.1.0.0_wls_Disk1_1of1.zip
-           oracle_weblogic_domain_name: domain1
-           oracle_weblogic_domain_adminusername: weblogic
-           oracle_weblogic_domain_adminpassword: welcome1
 
 License
 -------
