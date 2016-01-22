@@ -4,11 +4,11 @@
   become: yes
   become_user: root
   tags:
-    - install_weblogic
+    - installweblogic
 
 - include: install-infra.yml
   when: not oracle_weblogic_quick_installation
   become: yes
   become_user: root
   tags:
-    - install_infra
+    - installinfra
