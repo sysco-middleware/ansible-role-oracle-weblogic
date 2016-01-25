@@ -17,9 +17,4 @@ galaxy_info:
   - oracle
   - web
 
-dependencies:
-  -
-    role: jeqo.java
-    java_provider: oracle
-    java_version: 8
-    java_type: jdk
+dependencies: []
