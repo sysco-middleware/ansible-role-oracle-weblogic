@@ -1,8 +1,10 @@
 ---
 # tasks file for ansible-oracle-wls
+- include: validate.yml
+
 - include: prepare.yml
   become: yes
-  
+
 - include: install-wls.yml
   become: yes
   become_user: "{{ oracle_weblogic_user }}"

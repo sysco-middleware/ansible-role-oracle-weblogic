@@ -1,0 +1,7 @@
+- name: validate oracle weblogic 12c release is supported
+  fail: "msg='release is not valid (supported versions: [12.2.1])'"
+  when: oracle_weblogic_version == '12c' and oracle_weblogic_release != '12.2.1'
+
+- name: validate oracle weblogic 11g release is supported
+  fail: "msg='release is not valid (supported versions: [10.3.6])'"
+  when: oracle_weblogic_version == '11g' and oracle_weblogic_release != '10.3.6'

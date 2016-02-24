@@ -1,69 +1,25 @@
 ---
 #
-- name: validate oracle weblogic 12c release is supported
-  fail: "msg='release is not valid (supported versions: [12.2.1])'"
-  when: oracle_weblogic_release is defined and oracle_weblogic_release != '12.2.1'
-
-- set_fact:
-    installers:
-      -
-        path: "{{ oracle_wlsqs_installers_12_2_1_1of1 }}"
-        checksum: "{{ oracle_wlsqs_installers_12_2_1_1of1_checksum }}"
-  when: oracle_weblogic_release == '12.2.1' and oracle_weblogic_quick_installation
-
-- set_fact:
-    installers:
-      -
-        path: "{{ oracle_wls_installers_12_2_1_1of1 }}"
-        checksum: "{{ oracle_wls_installers_12_2_1_1of1_checksum }}"
-  when: oracle_weblogic_release == '12.2.1' and not oracle_weblogic_quick_installation
-
-- include: prepare-wls-installers-12c.yml
-
-- name: create group
-  group: name={{ oracle_weblogic_group }} state=present
-- name: create user
-  user: name={{ oracle_weblogic_user }} group={{ oracle_weblogic_group }} state=present
-
-- name: prepare installation directories
-  file:
-    path: "{{ item }}"
-    state: directory
-    owner: "{{ oracle_weblogic_user }}"
-    group: "{{ oracle_weblogic_group }}"
-  with_items:
-    - "{{ oracle_weblogic_oracle_home }}"
-    - "{{ oracle_weblogic_inventory_directory }}"
-
-- set_fact:
-    oracle_weblogic_response_file: /tmp/wls-install-12c.rsp
-
 - name: prepare installation response file
   template:
     src: wls-install-12c.rsp.j2
     dest: "{{ oracle_weblogic_response_file }}"
-    owner: "{{ oracle_weblogic_user }}"
-    group: "{{ oracle_weblogic_group }}"
   when: not oracle_weblogic_quick_installation
 
 - name: prepare oracle inventory parameters
   template:
     src: ora_inst.loc.j2
     dest: "/etc/oraInst.loc"
-    owner: "{{ oracle_weblogic_user }}"
-    group: "{{ oracle_weblogic_group }}"
 
 - set_fact:
-    oracle_weblogic_install_command: "java -jar /tmp/fmw_{{ oracle_weblogic_release }}.0.0_wls_quick.jar ORACLE_HOME={{ oracle_weblogic_oracle_home }} >> /tmp/weblogic-installation.log"
+    oracle_weblogic_install_command: "java -jar {{ oracle_weblogic_jar }} ORACLE_HOME={{ oracle_weblogic_oracle_home }} >> /tmp/weblogic-installation.log"
   when: oracle_weblogic_quick_installation
 
 - set_fact:
-    oracle_weblogic_install_command: "java -jar /tmp/fmw_{{ oracle_weblogic_release }}.0.0_wls.jar -silent -responseFile {{ oracle_weblogic_response_file }} >> /tmp/weblogic-installation.log"
+    oracle_weblogic_install_command: "java -jar {{ oracle_weblogic_jar }} -silent -responseFile {{ oracle_weblogic_response_file }} >> /tmp/weblogic-installation.log"
   when: not oracle_weblogic_quick_installation
 
 - name: install weblogic
   shell: "{{ oracle_weblogic_install_command }}"
   args:
     creates: "{{ oracle_weblogic_oracle_home }}/oraInst.loc"
-  become: yes
-  become_user: "{{ oracle_weblogic_user }}"

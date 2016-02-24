@@ -1,21 +1,5 @@
 ---
 #
-- name: validate oracle weblogic 12c release is supported
-  fail: "msg='release is not valid (supported versions: [12.2.1])'"
-  when: oracle_weblogic_release is defined and oracle_weblogic_release != '12.2.1'
-
-- set_fact:
-    installers:
-      -
-        path: "{{ oracle_infra_installers_12_2_1_1of1 }}"
-        checksum: "{{ oracle_infra_installers_12_2_1_1of1_checksum }}"
-  when: oracle_weblogic_release == '12.2.1'
-
-- include: prepare-wls-installers-12c.yml
-
-- set_fact:
-    oracle_weblogic_infra_response_file: /tmp/infra-install-12c.rsp
-
 - name: prepare installation response file
   template:
     src: infra-install-12c.rsp.j2
@@ -23,12 +7,7 @@
     owner: "{{ oracle_weblogic_user }}"
     group: "{{ oracle_weblogic_group }}"
 
-- set_fact:
-    oracle_weblogic_install_command: "java -jar /tmp/fmw_{{ oracle_weblogic_release }}.0.0_infrastructure.jar -silent -responseFile {{ oracle_weblogic_infra_response_file }} >> /tmp/infra-installation.log"
-
 - name: install weblogic infra
-  shell: "{{ oracle_weblogic_install_command }}"
+  shell: "java -jar {{ oracle_weblogic_infra_jar }} -silent -responseFile {{ oracle_weblogic_infra_response_file }} >> /tmp/infra-installation.log"
   #args:
   #  creates: "{{ oracle_weblogic_oracle_home }}/oraInst.loc"
-  become: yes
-  become_user: "{{ oracle_weblogic_user }}"

@@ -25,6 +25,6 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define "test03" do |node|
-    node.vm.box = "jeqo/oracle-jdk-8-centos7"
+    node.vm.box = "jeqo/oracle-jdk-7-centos7"
   end
 end
