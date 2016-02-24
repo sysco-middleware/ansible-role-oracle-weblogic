@@ -1,14 +1,17 @@
 ---
 # tasks file for ansible-oracle-wls
+- include: prepare.yml
+  become: yes
+  
 - include: install-wls.yml
   become: yes
-  become_user: root
+  become_user: "{{ oracle_weblogic_user }}"
   tags:
-    - installweblogic
+    - install
 
 - include: install-infra.yml
   when: not oracle_weblogic_quick_installation
   become: yes
-  become_user: root
+  become_user: "{{ oracle_weblogic_user }}"
   tags:
-    - installinfra
+    - install

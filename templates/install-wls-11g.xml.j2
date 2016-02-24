@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bea-installer>
+  <!-- Silent installer option -mode=silent -silent_xml=C:\myfiles\silent.xml -->
+  <!-- Specify values for each data-value name as follows:
+
+     BEAHOME            Complete pathname to the Middleware Home directory that
+                        will contain this installation.
+
+     WLS_INSTALL_DIR    Complete pathname to the product installation
+                        directory in which to install WebLogic Server.
+
+     COMPONENT_PATHS    Components and subcomponents to be installed.
+                        To install multiple components, separate the components
+                        with a bar (|).
+                        To install subcomponents, specify a
+                        component/subcomponent combination. For example,
+                        to install Core Application Server, use
+                        "WebLogic Server/Core Application Server".
+
+     INSTALL_NODE_MANAGER_SERVICE  Install Node Manager as a Windows
+                                   service. The default is "no".
+                                   Requires Administrator privileges.
+
+     NODEMGR_PORT       Node Manager listen port number. If none specified,
+                        installer uses default port 5556.
+                        INSTALL_NODE_MANAGER_SERVICE must be set to "yes".
+
+     INSTALL_SHORTCUT_IN_ALL_USERS_FOLDER
+                        The Windows Start menu folder in which you want the
+                        Start menu shortcuts created.
+                        The user performing the installation must have
+                        Administrator privileges to install the shortcuts
+                        in the All Users folder.
+                        Possible values:
+                        true/yes  The shortcuts are created in
+                                  the All Users folder (default)
+                        false/no  The shortcuts are created in
+                                  the local user's folder
+     BEA_BUNDLED_JVMS
+                        Option to select BEA bundled JVMS (for e.g. either
+                        jrockit_160_05 or jdk160_05 for Windows and Linux
+                        platforms). The default value is all BEA bundled JVMs
+                        for selected platform.
+     LOCAL_JVMS
+                        Option to select supported JVM, which is already
+                        installed. Note: The presence of either(BEA_BUNDLED_JVMS
+                        or LOCAL_JVMS) or both of these tokens negates any
+                        default selection and only sets the values assigned for
+                        these tokens as user selection. The value of the token
+                        can be a pipe ('|') separated JavaHomes.
+-->
+  <input-fields>
+    <data-value name="BEAHOME" value="{{ oracle_weblogic_oracle_home }}" />
+    <data-value name="WLS_INSTALL_DIR" value="{{ oracle_weblogic_home }}" />
+    <data-value name="COMPONENT_PATHS" value="WebLogic Server/Core Application Server|WebLogic Server/Administration Console|WebLogic Server/Configuration Wizard and Upgrade Framework|WebLogic Server/Web 2.0 HTTP Pub-Sub Server|WebLogic Server/WebLogic SCA|WebLogic Server/WebLogic JDBC Drivers|WebLogic Server/Third Party JDBC Drivers|WebLogic Server/WebLogic Server Clients|WebLogic Server/WebLogic Web Server Plugins|WebLogic Server/UDDI and Xquery Support|WebLogic Server/Evaluation Database|WebLogic Server/Server Examples|Oracle Coherence/Coherence Product Files" />
+  </input-fields>
+</bea-installer>

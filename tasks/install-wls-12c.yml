@@ -21,16 +21,16 @@
 - include: prepare-wls-installers-12c.yml
 
 - name: create group
-  group: name={{ oracle_weblogic_os_group }} state=present
+  group: name={{ oracle_weblogic_group }} state=present
 - name: create user
-  user: name={{ oracle_weblogic_os_user }} group={{ oracle_weblogic_os_group }} state=present
+  user: name={{ oracle_weblogic_user }} group={{ oracle_weblogic_group }} state=present
 
 - name: prepare installation directories
   file:
     path: "{{ item }}"
     state: directory
-    owner: "{{ oracle_weblogic_os_user }}"
-    group: "{{ oracle_weblogic_os_group }}"
+    owner: "{{ oracle_weblogic_user }}"
+    group: "{{ oracle_weblogic_group }}"
   with_items:
     - "{{ oracle_weblogic_oracle_home }}"
     - "{{ oracle_weblogic_inventory_directory }}"
@@ -42,16 +42,16 @@
   template:
     src: wls-install-12c.rsp.j2
     dest: "{{ oracle_weblogic_response_file }}"
-    owner: "{{ oracle_weblogic_os_user }}"
-    group: "{{ oracle_weblogic_os_group }}"
+    owner: "{{ oracle_weblogic_user }}"
+    group: "{{ oracle_weblogic_group }}"
   when: not oracle_weblogic_quick_installation
 
 - name: prepare oracle inventory parameters
   template:
     src: ora_inst.loc.j2
     dest: "/etc/oraInst.loc"
-    owner: "{{ oracle_weblogic_os_user }}"
-    group: "{{ oracle_weblogic_os_group }}"
+    owner: "{{ oracle_weblogic_user }}"
+    group: "{{ oracle_weblogic_group }}"
 
 - set_fact:
     oracle_weblogic_install_command: "java -jar /tmp/fmw_{{ oracle_weblogic_release }}.0.0_wls_quick.jar ORACLE_HOME={{ oracle_weblogic_oracle_home }} >> /tmp/weblogic-installation.log"
@@ -66,4 +66,4 @@
   args:
     creates: "{{ oracle_weblogic_oracle_home }}/oraInst.loc"
   become: yes
-  become_user: "{{ oracle_weblogic_os_user }}"
+  become_user: "{{ oracle_weblogic_user }}"

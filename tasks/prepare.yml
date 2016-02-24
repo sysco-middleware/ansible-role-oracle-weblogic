@@ -1,0 +1,14 @@
+---
+# prepare operating system to the installation
+- name: create weblogic group
+  group:
+    name: "{{ oracle_weblogic_group }}"
+    state: present
+
+- name: create weblogic user
+  user:
+    name: "{{ oracle_weblogic_user }}"
+    group: "{{ oracle_weblogic_group }}"
+    create_home: yes
+    home: "{{ oracle_weblogic_user_home }}"
+    state: present

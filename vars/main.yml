@@ -1,15 +1,9 @@
 ---
 # vars file for ansible-oracle-wls
-oracle_weblogic_os_user: oraclefmw
-oracle_weblogic_os_group: ofmwinstall
-oracle_weblogic_os_user_home: "/home/{{ oracle_weblogic_os_user }}"
-oracle_weblogic_oracle_home: "{{ oracle_weblogic_os_user_home }}/product/oracle_home"
-oracle_weblogic_inventory_file: "{{ oracle_weblogic_os_user_home }}/oraInst.loc"
-oracle_weblogic_inventory_directory: "{{ oracle_weblogic_os_user_home }}/ora_inventory"
-
-oracle_weblogic_domains_home: "{{ oracle_weblogic_os_user_home }}/config/domains"
-oracle_weblogic_applications_home: "{{ oracle_weblogic_os_user_home }}/config/applications"
-
-oracle_wls_installers_12_2_1_1of1_checksum: 58aa613f95a2614f93e2789d15d3b4bbaa357575
-oracle_wlsqs_installers_12_2_1_1of1_checksum: dcd79a4c911e2b18a247a2dddc5691c61dc41e88
-oracle_infra_installers_12_2_1_1of1_checksum: abac7da81c83c36fea488410076bdde2ad41b0aa
+oracle_weblogic_user: oraclefmw
+oracle_weblogic_group: ofmwinstall
+oracle_weblogic_user_home: /opt/oraclefmw
+oracle_weblogic_oracle_home: /opt/oraclefmw/product/oracle_home
+oracle_weblogic_home: "{{ oracle_weblogic_oracle_home }}/wlserver"
+oracle_weblogic_inventory_directory: /opt/oraclefmw/inventory
+oracle_weblogic_inventory_file: /opt/oraclefmw/oraInst.loc

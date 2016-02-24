@@ -20,8 +20,8 @@
   template:
     src: infra-install-12c.rsp.j2
     dest: "{{ oracle_weblogic_infra_response_file }}"
-    owner: "{{ oracle_weblogic_os_user }}"
-    group: "{{ oracle_weblogic_os_group }}"
+    owner: "{{ oracle_weblogic_user }}"
+    group: "{{ oracle_weblogic_group }}"
 
 - set_fact:
     oracle_weblogic_install_command: "java -jar /tmp/fmw_{{ oracle_weblogic_release }}.0.0_infrastructure.jar -silent -responseFile {{ oracle_weblogic_infra_response_file }} >> /tmp/infra-installation.log"
@@ -31,4 +31,4 @@
   #args:
   #  creates: "{{ oracle_weblogic_oracle_home }}/oraInst.loc"
   become: yes
-  become_user: "{{ oracle_weblogic_os_user }}"
+  become_user: "{{ oracle_weblogic_user }}"
