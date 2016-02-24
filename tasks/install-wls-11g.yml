@@ -19,7 +19,7 @@
 
 - name: generate response file
   template:
-    source: install-wls-11g.xml.j2
+    source: "install-wls-11g.xml.j2"
     dest: "{{ oracle_weblogic_response_file }}"
 
 - set_fact:
