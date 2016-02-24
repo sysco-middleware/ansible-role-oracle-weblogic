@@ -7,3 +7,4 @@ oracle_weblogic_oracle_home: /opt/oraclefmw/product/oracle_home
 oracle_weblogic_home: "{{ oracle_weblogic_oracle_home }}/wlserver"
 oracle_weblogic_inventory_directory: /opt/oraclefmw/inventory
 oracle_weblogic_inventory_file: /opt/oraclefmw/oraInst.loc
+oracle_weblogic_response_file:
