@@ -9,6 +9,6 @@
   user:
     name: "{{ oracle_weblogic_user }}"
     group: "{{ oracle_weblogic_group }}"
-    create_home: yes
+    createhome: yes
     home: "{{ oracle_weblogic_user_home }}"
     state: present
