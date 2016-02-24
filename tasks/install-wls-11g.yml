@@ -20,10 +20,10 @@
 - name: generate response file
   template:
     source: install-wls-11g.xml.j2
-    dest: "{{ oracle_weblogic_response_file }}"
+    dest: "{{ oracle_weblogic_user_home }}/install-wls-11g.xml"
 
 - set_fact:
-    oracle_weblogic_install_command: "java -jar {{ oracle_weblogic_jar }} -mode=silent -silent_xml={{ oracle_weblogic_response_file }} >> /tmp/weblogic-installation.log"
+    oracle_weblogic_install_command: "java -jar {{ oracle_weblogic_jar }} -mode=silent -silent_xml={{ oracle_weblogic_user_home }}/install-wls-11g.xml >> /tmp/weblogic-installation.log"
 
 - name: install weblogic
   shell: "{{ oracle_weblogic_install_command }}"
