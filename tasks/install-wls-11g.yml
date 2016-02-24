@@ -16,11 +16,13 @@
 
 - set_fact:
     oracle_weblogic_response_file: "{{ oracle_weblogic_user_home }}/install-wls-11g.xml"
+  when: oracle_weblogic_response_file is not defined
 
 - name: generate response file
   template:
     source: install-wls-11g.xml.j2
     dest: "{{ oracle_weblogic_response_file }}"
+  when: oracle_weblogic_response_file is not defined
 
 - set_fact:
     oracle_weblogic_install_command: "java -jar {{ oracle_weblogic_jar }} -mode=silent -silent_xml={{ oracle_weblogic_response_file }} >> /tmp/weblogic-installation.log"
