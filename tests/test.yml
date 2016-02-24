@@ -6,7 +6,7 @@
       oracle_weblogic_release: 12.2.1
       oracle_weblogic_quick_installation: yes
       oracle_weblogic_install_infra: no
-      oracle_wlsqs_installers_12_2_1_1of1: /srv/files/fmw_12.2.1.0.0_wls_quick_Disk1_1of1.zip
+      oracle_wlsqs_installers_12_2_1_1of1: /srv/files/12.2.1/fmw_12.2.1.0.0_wls_quick_Disk1_1of1.zip
 
 - name: test install weblogic 12c
   hosts: test02
@@ -17,7 +17,7 @@
       oracle_weblogic_quick_installation: no
       oracle_weblogic_install_infra: yes
       oracle_wls_installers_12_2_1_1of1: /srv/files/fmw_12.2.1.0.0_wls_Disk1_1of1.zip
-      oracle_infra_installers_12_2_1_1of1: /srv/files/fmw_12.2.1.0.0_infrastructure_Disk1_1of1.zip
+      oracle_infra_installers_12_2_1_1of1: /srv/files/12.2.1/fmw_12.2.1.0.0_infrastructure_Disk1_1of1.zip
 
 - name: test install weblogic 11g
   hosts: test03
@@ -27,4 +27,4 @@
       oracle_weblogic_release: 10.3.6
       oracle_weblogic_quick_installation: no
       oracle_weblogic_install_infra: no
-      oracle_weblogic_jar: /srv/files/wls1036_generic.jar
+      oracle_weblogic_jar: /srv/files/11.1.1/wls1036_generic.jar

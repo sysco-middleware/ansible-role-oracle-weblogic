@@ -4,10 +4,10 @@ ENV['VAGRANT_DEFAULT_PROVIDER'] = 'virtualbox'
 
 Vagrant.configure(2) do |config|
 
-  config.vm.synced_folder "/home/jeqo/oracle/fmw/installers/12.2.1/", "/srv/files"
+  config.vm.synced_folder "/home/jeqo/oracle/fmw/installers/", "/srv/files", mount_options: ["dmode=777,fmode=776"]
 
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "main.yml"
+    ansible.playbook = "test.yml"
     ansible.galaxy_role_file = "roles.yml"
   end
 
