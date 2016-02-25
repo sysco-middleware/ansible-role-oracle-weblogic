@@ -13,10 +13,3 @@
   when: not oracle_weblogic_already_installed
   tags:
     - install
-
-- include: install-infra.yml
-  when: not oracle_weblogic_quick_installation
-  become: yes
-  become_user: "{{ oracle_weblogic_user }}"
-  tags:
-    - install
