@@ -7,7 +7,7 @@
   become: yes
   when: not oracle_weblogic_already_installed
 
-- include: "install-wls-{{ oracle_weblogic_version }}.yml"
+- include: "install-{{ oracle_weblogic_version }}.yml"
   become: yes
   become_user: "{{ oracle_weblogic_user }}"
   when: not oracle_weblogic_already_installed
