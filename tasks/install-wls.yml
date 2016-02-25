@@ -1,7 +1,0 @@
----
-#
-- include: install-wls-11g.yml
-  when: oracle_weblogic_version == '11g'
-
-- include: install-wls-12c.yml
-  when: oracle_weblogic_version == '12c'

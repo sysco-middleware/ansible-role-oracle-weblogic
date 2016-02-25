@@ -5,7 +5,6 @@
       oracle_weblogic_version: 12c
       oracle_weblogic_release: 12.2.1
       oracle_weblogic_quick_installation: yes
-      oracle_weblogic_install_infra: no
       oracle_weblogic_jar: /srv/files/12.2.1/fmw_12.2.1.0.0_wls_quick.jar
 
 - name: test install weblogic 12c
@@ -15,16 +14,13 @@
       oracle_weblogic_version: 12c
       oracle_weblogic_release: 12.2.1
       oracle_weblogic_quick_installation: no
-      oracle_weblogic_install_infra: yes
       oracle_weblogic_jar: /srv/files/12.2.1/fmw_12.2.1.0.0_wls.jar
-      oracle_weblogic_infra_jar: /srv/files/12.2.1/fmw_12.2.1.0.0_infrastructure.jar
 
 - name: test install weblogic 11g
-  hosts: test03
+  hosts: test02
   roles:
     - role: oracle-weblogic
       oracle_weblogic_version: 11g
       oracle_weblogic_release: 10.3.6
       oracle_weblogic_quick_installation: no
-      oracle_weblogic_install_infra: no
       oracle_weblogic_jar: /srv/files/11.1.1/wls1036_generic.jar
