@@ -5,3 +5,15 @@
 - name: validate oracle weblogic 11g release is supported
   fail: "msg='release is not valid (supported versions: [10.3.6])'"
   when: oracle_weblogic_version == '11g' and oracle_weblogic_release != '10.3.6'
+
+- name: validate oracle weblogic is installed
+  stat: path="{{ oracle_weblogic_wls_home }}"
+  register: wls_home
+
+- debug:
+    msg: "oracle weblogic is already installed in this {{ oracle_weblogic_oracle_home }}"
+  when: wls_home.stat.exists
+
+- set_fact:
+    oracle_weblogic_already_installed: true
+  when: wls_home.stat.exists
