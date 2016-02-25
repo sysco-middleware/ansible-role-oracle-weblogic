@@ -12,3 +12,8 @@
     createhome: yes
     home: "{{ oracle_weblogic_user_home }}"
     state: present
+
+- name: prepare oracle inventory parameters
+  template:
+    src: ora_inst.loc.j2
+    dest: "/etc/oraInst.loc"

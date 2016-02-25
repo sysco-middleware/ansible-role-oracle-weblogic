@@ -6,11 +6,6 @@
     dest: "{{ oracle_weblogic_response_file }}"
   when: not oracle_weblogic_quick_installation
 
-- name: prepare oracle inventory parameters
-  template:
-    src: ora_inst.loc.j2
-    dest: "/etc/oraInst.loc"
-
 - set_fact:
     oracle_weblogic_install_command: "java -jar {{ oracle_weblogic_jar }} ORACLE_HOME={{ oracle_weblogic_oracle_home }} >> /tmp/weblogic-installation.log"
   when: oracle_weblogic_quick_installation
