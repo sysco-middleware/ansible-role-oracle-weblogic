@@ -4,8 +4,6 @@
   file:
     path: "{{ item }}"
     state: directory
-    owner: "{{ oracle_weblogic_user }}"
-    group: "{{ oracle_weblogic_group }}"
   with_items:
     - "{{ oracle_weblogic_oracle_home }}"
     - "{{ oracle_weblogic_inventory_directory }}"

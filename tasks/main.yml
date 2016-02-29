@@ -13,3 +13,7 @@
   when: not oracle_weblogic_already_installed
   tags:
     - install
+
+- include: "fix-wlst-securerandom-{{ oracle_weblogic_version }}.yml"
+  become: yes
+  become_user: "{{ oracle_weblogic_user }}"
