@@ -2,7 +2,7 @@
 #
 - name: prepare installation response file
   template:
-    src: wls-install-12c.rsp.j2
+    src: install-wls-12c.rsp.j2
     dest: "{{ oracle_weblogic_response_file }}"
   when: not oracle_weblogic_quick_installation
 
